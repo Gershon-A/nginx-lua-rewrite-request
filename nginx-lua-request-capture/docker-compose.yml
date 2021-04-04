@@ -4,7 +4,7 @@ services:
     image: openresty/openresty:alpine
 #    build: .
     ports:
-      - "80:80"
+      - "8082:80"
     volumes:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./nginx.conf.d/:/usr/local/openresty/nginx/conf/conf.d/
