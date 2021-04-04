@@ -1,0 +1,28 @@
+name: Test
+on:
+  pull_request:
+  push: { branches: main }
+
+jobs:
+  test:
+    name: Run test suite
+    runs-on: ubuntu-latest
+    env:
+ #     COMPOSE_FILE: nginx-lua-request-capture/docker-compose.yml
+ #     DOCKER_USER: ${{ secrets.DOCKER_USER }}
+ #     DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+#    - name: Login to DockerHub
+#      run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+    - name: Build docker images
+      run: cd nginx-lua-request-capture ; docker-compose -f docker-compose.yml up -d
+#      run: docker-compose -f docker-compose.yml up -d
+#      run: docker-compose build
+
+#    - name: Run tests
+#      run: docker-compose run test
