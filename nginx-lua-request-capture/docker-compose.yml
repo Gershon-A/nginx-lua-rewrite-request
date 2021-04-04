@@ -1,11 +1,15 @@
-version: '2'
+version: "3.9"
 services:
   nginx:
-    #image: openresty/openresty
-    build: .
+    image: openresty/openresty:alpine
+#    build: .
     ports:
       - "8082:80"
     volumes:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./nginx.conf.d/:/usr/local/openresty/nginx/conf/conf.d/
       - ./lua:/usr/local/openresty/nginx/lua
+networks:
+  default:
+    external:
+      name: my_nginx_network      
