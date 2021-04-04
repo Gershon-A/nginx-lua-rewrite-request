@@ -7,7 +7,7 @@ jobs:
   test:
     name: Run test suite
     runs-on: ubuntu-latest
-    env:
+ #   env:
  #     COMPOSE_FILE: nginx-lua-request-capture/docker-compose.yml
  #     DOCKER_USER: ${{ secrets.DOCKER_USER }}
  #     DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
