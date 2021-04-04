@@ -30,7 +30,7 @@ jobs:
         docker-compose -f docker-compose-loger.yml up -d      
     - name: Send request with CURL
       run: |
-        curl -i http://nginx-lua-request-capture_nginx_1:8082/ -H 'content-type: application/json'   -d  '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",    "client_secret":"secret",    "user_key":"my_key" }'  
+        curl -i http://localhost:8082/ -H 'content-type: application/json'   -d  '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",    "client_secret":"secret",    "user_key":"my_key" }'  
     - name: Check log
       run: |
         docker logs -f logger_nginx_1 | grep client_ip
