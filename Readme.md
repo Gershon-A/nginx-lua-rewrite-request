@@ -10,11 +10,11 @@ docker-compose -f docker-compose-loger.yml up -d
 ```
 ## Send request 
 ```
-curl -i http://localhost:8082/foo5  -H 'content-type: application/json'   -d '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",    "client_secret":"secret",    "user_key":"my_key" }'
+curl -i http://localhost:8082/ -H 'content-type: application/json'   -d '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",    "client_secret":"secret",    "user_key":"my_key" }'
 ```
 ## How Tested:
 1) 
-```curl -i http://localhost:8082/foo5  -H 'content-type: application/json'   -d '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",       "client_secret":"secret",    "user_key":"my_key" }'```
+```curl -i http://localhost:8082/ -H 'content-type: application/json'   -d '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",       "client_secret":"secret",    "user_key":"my_key" }'```
 
 `http://localhost:8082` - nginx that acts as a reverse proxy to another nginx that acts as `logger` 
 
@@ -23,6 +23,7 @@ curl -i http://localhost:8082/foo5  -H 'content-type: application/json'   -d '{ 
 
 3) 
 The request received at the end (`logger`):
+`docker logs -f logger_nginx_1`
 ```
 "body":"{\"user_key\":\"my_key\",\"client_ip\":\"172.19.0.1\",\"message\":\"Received response 404\",\"level\":\"INFO\",\"source\":\"Gershon\",\"client_secret\":\"secret\"}"
 ```
