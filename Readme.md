@@ -1,3 +1,5 @@
+[![Test](https://github.com/Gershon-A/nginx-lua-rewrite-request/actions/workflows/main-test.yml/badge.svg?branch=main)](https://github.com/Gershon-A/nginx-lua-rewrite-request/actions/workflows/main-test.yml)
+
 ## Reverse proxy
 ```
 cd nginx-lua-request-capture
