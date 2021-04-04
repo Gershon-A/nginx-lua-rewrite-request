@@ -29,13 +29,11 @@ jobs:
       run: |
         cd logger
         docker-compose -f docker-compose-loger.yml up -d     
-    - name: Sleep for 30 seconds
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '5s'
+
         
     - name: Check containers is running
-      run: docker ps
+      run: sleep 5s
+           docker ps
       
       
     - name: Send request with CURL
@@ -44,7 +42,7 @@ jobs:
         
     - name: Check log
       run: |
-        docker logs -f logger_nginx_1 | grep client_ip
+        docker logs logger_nginx_1 2>&1 | grep -w "client_ip"  >/dev/null && echo "grep result exist" || echo "grep result doesn't exist; exit 1"
         
         
         
