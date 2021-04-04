@@ -24,10 +24,14 @@ jobs:
         cd nginx-lua-request-capture
         docker network create my_nginx_network
         docker-compose -f docker-compose.yml up -d
+        
     - name: logger docker container
       run: |
         cd logger
-        docker-compose -f docker-compose-loger.yml up -d      
+        docker-compose -f docker-compose-loger.yml up -d     
+    - name: Check containers is running
+      run: docker ps
+      
     - name: Send request with CURL
       run: |
         curl -i http://localhost:8082/ -H 'content-type: application/json'   -d  '{    "level":"INFO",    "source":"Gershon",    "message":"Received response 404",    "client_secret":"secret",    "user_key":"my_key" }'  
