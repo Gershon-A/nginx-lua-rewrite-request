@@ -30,10 +30,16 @@ jobs:
         cd logger
         docker-compose -f docker-compose-loger.yml up -d     
 
-        
+    - name: Waiting for containers
+      # You may pin to the exact commit or the version.
+      # uses: whatnick/wait-action@71008d68ab3939de1475f4938583e4480b5d09a6
+      uses: whatnick/wait-action@v0.1.2
+      with:
+        # Sleep time
+        time: 5s # default is 10s
+
     - name: Check containers is running
-      run: sleep 5
-           docker ps
+      run:  docker ps
       
       
     - name: Send request with CURL
