@@ -32,7 +32,7 @@ jobs:
 
         
     - name: Check containers is running
-      run: sleep 5s
+      run: sleep 5
            docker ps
       
       
