@@ -1,5 +1,5 @@
 ngx.log(ngx.ERR, "REQUEST capturing started")
-json = require("json")
+local json = require('cjson')
 
 function getval(v, def)
   if v == nil then
