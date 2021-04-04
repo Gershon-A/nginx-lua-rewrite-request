@@ -29,8 +29,14 @@ jobs:
       run: |
         cd logger
         docker-compose -f docker-compose-loger.yml up -d     
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
+        
     - name: Check containers is running
       run: docker ps
+      
       
     - name: Send request with CURL
       run: |
