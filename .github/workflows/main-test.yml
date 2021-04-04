@@ -20,7 +20,9 @@ jobs:
 #      run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
     - name: Build docker images
-      run: cd nginx-lua-request-capture ; docker-compose -f docker-compose.yml up -d
+      run: cd nginx-lua-request-capture
+           docker network create my_nginx_network
+           docker-compose -f docker-compose.yml up -d
 #      run: docker-compose -f docker-compose.yml up -d
 #      run: docker-compose build
 
